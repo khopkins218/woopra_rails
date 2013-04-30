@@ -1,6 +1,6 @@
 # WoopraRails
 
-TODO: Write a gem description
+A gem for Ruby on Rails (version 3 and higher, wont work with Rails 4) to connect through the HTTP API interface to log pageviews, identities, and custom events to Woopra Analytics
 
 ## Installation
 
