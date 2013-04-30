@@ -29,13 +29,6 @@ Or install it yourself as:
       account: woopra-rails
       dryrun: false
 
-  Next setup an initializer to load the necessary configuration.  Add an initializer to app/config/initializers with the following content:
-
-    begin
-      WoopraRails.config = YAML.load_file(Rails.root.join("config","woopra.yml"))[Rails.env]
-      WoopraRails.init
-    end
-
   At this point, Woopra should initialize on app load and be ready for usage.
 
 ## Usage
