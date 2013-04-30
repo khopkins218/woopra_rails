@@ -68,4 +68,5 @@ Or install it yourself as:
 
 ## Contributions
   Rob Gleeson -- Thanks for the help and code reviews! (@robgleeson)
+  
   GeneralAssemb.ly -- Thanks for the use-case to give me the opportunity to give back to the  Rails community (http://generalassemb.ly)
