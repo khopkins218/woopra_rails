@@ -48,7 +48,7 @@ Or install it yourself as:
   Log a custom event:
   This functionality is pretty extensible.  It expects an event name, and a hash of params that are turned into Woopra event descriptors.
     
-    WoopraRails::log_event(
+    WoopraRails.log_event(
       "my_test_event",
       {
         user_name: "Kevin Hopkins",
