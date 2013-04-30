@@ -6,6 +6,11 @@ module WoopraRails::Session
     def set_or_use_woopra_cookie
       session[:woopra_user_id] = SecureRandom.hex(16) unless !session || session[:woopra_user_id]
     end
+
+    def clear_woopra_session
+      session[:woopra_user_id] = nil
+    end
+    helper_method :clear_woopra_session
   end
 
   class << self
@@ -21,8 +26,5 @@ module WoopraRails::Session
       request.url
     end
 
-    def clear_session
-      session[:woopra_user_id] = nil
-    end
   end
 end

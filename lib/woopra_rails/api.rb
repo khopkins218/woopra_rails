@@ -10,9 +10,9 @@ module WoopraRails
     end
 
     def log_event(event_name, args={})
-      action = "&ce_name=#{URI::encode event_name}"
+      action = "&ce_name=#{URI::encode event_name.to_s}"
       args.each do |k,v|
-        action += "&ce_#{k}=#{URI::encode v}"
+        action += "&ce_#{k}=#{URI::encode v.to_s}"
       end
       issue_request(action)
     end
