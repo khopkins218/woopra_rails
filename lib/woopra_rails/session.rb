@@ -20,5 +20,9 @@ module WoopraRails::Session
     def page_path
       request.url
     end
+
+    def clear_session
+      session[:woopra_user_id] = nil
+    end
   end
 end

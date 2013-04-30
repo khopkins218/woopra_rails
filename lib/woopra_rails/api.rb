@@ -1,7 +1,7 @@
 module WoopraRails
   class << self
-    def identify(email)
-      @base_params += "&cv_name=#{email}"
+    def identify(name=nil, email=nil)
+      @base_params += "&cv_name=#{name}&cv_email=#{email}"
       issue_request
     end
 
