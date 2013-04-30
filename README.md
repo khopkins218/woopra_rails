@@ -48,10 +48,6 @@ Or install it yourself as:
     
     response = WoopraRails.identify("me@kevinlhopkins.com")
   
-  This will return a WoopraRails::Response object.  To check for success:
-    
-    response.success? -> true
-
   Log a pageview:
     
     WoopraRails.log_pageview("Page Title", "/path/to/this/page")
