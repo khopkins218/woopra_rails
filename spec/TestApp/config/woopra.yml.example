@@ -1,0 +1,9 @@
+development:
+  account: woopra-rails
+  dryrun: true
+test:
+  account: woopra-rails
+  dryrun: true
+production:
+  account: woopra-rails
+  dryrun: false

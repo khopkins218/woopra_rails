@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.12'
+gem 'woopra_rails', path: "../../", require: 'woopra_rails'
+gem 'sqlite3'
+gem 'jquery-rails'
+gem 'pry-rails'

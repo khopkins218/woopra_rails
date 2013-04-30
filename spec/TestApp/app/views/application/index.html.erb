@@ -1,0 +1,13 @@
+<h1>Welcome to the Woopra-Rails Test Application!</h1>
+<hr />
+<h3>Record an Event</h3>
+<%= form_for "event" do |f| %>
+  <%= f.label :email, "User Email" %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label :name, "Event Name" %><br />
+  <%= f.text_field :name %><br />
+  <br />
+  <%= f.submit %>
+<% end %>
+<hr />
