@@ -1,4 +1,4 @@
-Copyright (c) 2013 Kevin Hopkins
+Copyright (c) 2013 Kevin L. Hopkins
 
 MIT License
 
