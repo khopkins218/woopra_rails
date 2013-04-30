@@ -67,6 +67,6 @@ Or install it yourself as:
 5. Create new Pull Request
 
 ## Contributions
-  Rob Gleeson -- Thanks for the help and code reviews! (@robgleeson)
-  
+  Rob Gleeson -- Thanks for the help and code reviews! [Github](http://github.com/robgleeson)
+
   GeneralAssemb.ly -- Thanks for the use-case to give me the opportunity to give back to the  Rails community (http://generalassemb.ly)
