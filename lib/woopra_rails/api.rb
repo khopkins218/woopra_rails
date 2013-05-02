@@ -1,7 +1,7 @@
 module WoopraRails
   class << self
     def identify(name=nil, email=nil, session=nil)
-      @session = Digest::MD5.hexdigest(session)
+      @session = Digest::MD5.hexdigest(session.nil? ? email : session)
       set_base
       @base_params += "&cv_name=#{URI::encode name}&cv_email=#{URI::encode email}"
       issue_request
