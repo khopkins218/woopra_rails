@@ -12,7 +12,7 @@ require 'fileutils'
 ].each{ |f| require "woopra_rails/#{f}" }
 
 module WoopraRails
-  @endpoint     = 'https://www.woopra.com/track/ce/'
+  @endpoint     = 'http://www.woopra.com/track/ce/'
   @dryrun       = false
   @config       = {}
   @env          = "development"
