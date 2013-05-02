@@ -1,5 +1,3 @@
-require "woopra_rails/version"
-require "woopra_rails/engine"
 require 'uri'
 require 'socket'
 require 'net/http'
@@ -10,15 +8,15 @@ require 'fileutils'
   'engine',
   'error',
   'response',
-  'session',
   'api'
 ].each{ |f| require "woopra_rails/#{f}" }
 
 module WoopraRails
-  @endpoint     = 'http://www.woopra.com/track/ce/'
+  @endpoint     = 'https://www.woopra.com/track/ce/'
   @dryrun       = false
   @config       = {}
   @env          = "development"
+  @session      = ""
 
   class << self
     def config=(config)
@@ -39,8 +37,7 @@ module WoopraRails
     end
 
     def set_base
-      @account = @config["account"]
-      @base_params = "#{@host}#{@endpoint}?host=#{account}&response=json&cookie=#{WoopraRails::Session.user_id}&timeout=300000"
+      @base_params = "#{@endpoint}?host=#{account}&response=json&cookie=#{@session}&timeout=300000"
     end
 
     def account

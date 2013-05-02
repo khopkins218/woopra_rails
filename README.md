@@ -30,6 +30,9 @@ Or install it yourself as:
       dryrun: false
 
   At this point, Woopra should initialize on app load and be ready for usage.
+  The last step is to extend your application controller with the ActiveSupport::Concerns functionality to allow for user identity tracking for anonymous users.  Add the following to your application_controller.rb
+
+    include WoopraRails::Session
 
 ## Usage
   All API actions return a WoopraRails::Response object.  To check for success, assign the return to a variable, e.g. response, and call success? for a boolean return
@@ -38,8 +41,9 @@ Or install it yourself as:
     response.success? #returns true
 
   Identify the current user:
+  We use the Rails session_id for user cookie management.  This session id is not sent over the wire, and is done with MD5 digest.
     
-    response = WoopraRails.identify("me@kevinlhopkins.com")
+    response = WoopraRails.identify("Kevin Hopkins", "me@kevinlhopkins.com", session[:session_id])
   
   Log a pageview:
     
