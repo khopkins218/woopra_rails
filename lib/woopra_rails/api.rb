@@ -22,7 +22,7 @@ module WoopraRails
     def issue_request(action=nil)
       action = action.nil? ? @base_params : @base_params + action
       uri = URI.parse(action)
-      resp = WoopraRails::Response.new(Net::HTTP.get(uri))
+      resp = WoopraRails::Response.new(dryrun ? nil : Net::HTTP.get(uri))
       return resp if resp.success?
       raise WoopraError
     end
