@@ -61,6 +61,7 @@ Or install it yourself as:
       }
     )
 
+  When running in dev or test where you don't want to record to your production dataset of analytics, set dryrun to true in your woopra.yml.  This will return success whenever a call is made, but the request wont be sent.
 
 ## Contributing
 

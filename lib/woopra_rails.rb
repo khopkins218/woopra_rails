@@ -40,6 +40,10 @@ module WoopraRails
       @base_params = "#{@endpoint}?host=#{account}&response=json&cookie=#{@session}&timeout=300000"
     end
 
+    def dryrun
+      return @config["dryrun"] == true
+    end
+
     def account
       @config["account"]
     end

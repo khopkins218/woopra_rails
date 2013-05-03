@@ -11,7 +11,7 @@ module WoopraRails::Response
     end
 
     def success?
-      return true if self.send(:success) == 1 || @dryrun
+      return true if self.send(:success) == 1 || WoopraRails.dryrun
       return false
     end
   end

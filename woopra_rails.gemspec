@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["kevin@h-pk-ns.com"]
   spec.description   = %q{Woopra for Ruby on Rails}
   spec.summary       = %q{Server side integration of Woopra HTTP API for Ruby on Rails applications}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/khopkins218/woopra_rails"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
