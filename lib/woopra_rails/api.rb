@@ -3,7 +3,19 @@ module WoopraRails
     def identify(name="", email="", session="")
       @session = Digest::MD5.hexdigest(session.nil? ? email : session)
       set_base
-      @base_params += "&cv_name=#{URI::encode name}&cv_email=#{URI::encode email}"
+      enc_name = begin
+        URI::encode name
+      rescue
+        ""
+      end
+
+      enc_email = begin
+        URI::encode email
+      rescue 
+        ""
+      end
+      
+      @base_params += "&cv_name=#{enc_name}&cv_email=#{enc_email}"
       issue_request
     end
 
