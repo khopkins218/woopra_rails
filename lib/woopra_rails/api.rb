@@ -1,7 +1,7 @@
 module WoopraRails
   class << self
     def identify(name="", email="")
-      session = "woopra_rails-#{Digest::MD5.hexdigest("#{user_email} #{user_name}")}" rescue ""
+      session = "woopra_rails-#{Digest::MD5.hexdigest("#{name} #{email}")}" rescue ""
       ::Rails.logger.debug "Session: #{session}"
       name = begin
         URI::encode name
@@ -16,7 +16,7 @@ module WoopraRails
       end
       
       action = "&cookie=#{session}&cv_name=#{name}&cv_email=#{email}"
-      ::Rails.logger.debug("User info: #{@name.inspect}, #{@email.inspect}")
+      ::Rails.logger.debug("User info: #{name.inspect}, #{email.inspect}")
       issue_request(action)
     end
 
@@ -44,7 +44,7 @@ module WoopraRails
       rescue 
         ""
       end
-      action = "&cookie=#{session}&cv_name=#{name}&cv_email=#{email}&ce_name=#{event_name}"
+      action = "&cookie=#{session}&cv_name=#{user_name}&cv_email=#{user_email}&ce_name=#{event_name}"
 
       args.each do |k,v|
         action += "&ce_#{k}=#{URI::encode v.to_s}"
