@@ -16,6 +16,7 @@ module WoopraRails
       end
       
       @identifier = "&cookie=#{@session}&cv_name=#{@name}&cv_email=#{@email}"
+      ::Rails.logger.debug("User info: #{@name.inspect}, #{@email.inspect}")
       issue_request
     end
 
