@@ -1,7 +1,7 @@
 module WoopraRails
   class << self
     def identify(name="", email="")
-      session = Digest::MD5.hexdigest(email) rescue ""
+      session = "woopra_rails-#{Digest::MD5.hexdigest("#{user_email} #{user_name}")}" rescue ""
       ::Rails.logger.debug "Session: #{session}"
       name = begin
         URI::encode name
@@ -25,7 +25,7 @@ module WoopraRails
     end
 
     def record(event_name, user_name="", user_email="", args={})
-      session = Digest::MD5.hexdigest(email) rescue ""
+      session = "woopra_rails-#{Digest::MD5.hexdigest("#{user_email} #{user_name}")}" rescue ""
       ::Rails.logger.debug "Session: #{session}"
       name = begin
         URI::encode name
