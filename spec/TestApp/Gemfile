@@ -4,4 +4,29 @@ gem 'rails', '3.2.12'
 gem 'woopra_rails', path: "../../", require: 'woopra_rails'
 gem 'sqlite3'
 gem 'jquery-rails'
-gem 'pry-rails'
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'pry-rails'
+  gem 'pry-coolline'
+  gem 'pry-doc'
+  gem 'awesome_print'
+end
+
+group :test do
+  gem 'timecop'
+  gem 'shoulda-matchers', '>= 2.0.0'
+  gem 'vcr'
+  # VCR is known to work with WebMock >= 1.8.0, < 1.10.
+  gem 'webmock', '= 1.9.3'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false, :group => :test
+end
+
+group :test, :dp, :development do
+  gem 'rspec-rails', '~> 2.13.0'
+  gem 'factory_girl_rails'
+  gem 'debugger'
+end
