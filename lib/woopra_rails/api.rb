@@ -1,35 +1,55 @@
 module WoopraRails
   class << self
     def identify(name="", email="")
-      @session = Digest::MD5.hexdigest(email) rescue ""
-      ::Rails.logger.debug "Session: #{@session}"
-      @name = begin
+      session = Digest::MD5.hexdigest(email) rescue ""
+      ::Rails.logger.debug "Session: #{session}"
+      name = begin
         URI::encode name
       rescue
         ""
       end
 
-      @email = begin
+      email = begin
         URI::encode email
       rescue 
         ""
       end
       
-      @identifier = "&cookie=#{@session}&cv_name=#{@name}&cv_email=#{@email}"
+      action = "&cookie=#{session}&cv_name=#{name}&cv_email=#{email}"
       ::Rails.logger.debug("User info: #{@name.inspect}, #{@email.inspect}")
-      issue_request
+      issue_request(action)
     end
 
     def log_pageview(title, url)
       issue_request("&ce_name=pv&ce_title=#{URI::encode title}&ce_url=#{url}")
     end
 
-    def record(event_name, args={})
-      ::Rails.logger.debug "Session: #{@session}"
-      action = "&cookie=#{@session}&ce_name=#{URI::encode event_name.to_s}"
+    def record(event_name, user_name="", user_email="", args={})
+      session = Digest::MD5.hexdigest(email) rescue ""
+      ::Rails.logger.debug "Session: #{session}"
+      name = begin
+        URI::encode name
+      rescue
+        ""
+      end
+
+      email = begin
+        URI::encode email
+      rescue 
+        ""
+      end
+
+      event_name = begin
+        URI::encode event_name
+      rescue 
+        ""
+      end
+      action = "&cookie=#{session}&cv_name=#{name}&cv_email=#{email}&ce_name=#{event_name}"
+
       args.each do |k,v|
         action += "&ce_#{k}=#{URI::encode v.to_s}"
       end
+      ::Rails.logger.debug("Action: #{action}")
       issue_request(action)
     end
 

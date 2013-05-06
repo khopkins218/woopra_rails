@@ -16,7 +16,6 @@ module WoopraRails
   @dryrun       = false
   @config       = {}
   @env          = "development"
-  @session      = ""
   @base_params  = ""
 
   class << self
