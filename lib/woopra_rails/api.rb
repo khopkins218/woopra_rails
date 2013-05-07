@@ -40,7 +40,7 @@ module WoopraRails
       rescue 
         ""
       end
-      action = "&cv_name=#{user_name}&cv_email=#{user_email}&ce_name=#{event_name}"
+      action = "&cv_name=#{name}&cv_email=#{email}&ce_name=#{event_name}"
 
       args.each do |k,v|
         action += "&ce_#{k}=#{URI::encode v.to_s}"
