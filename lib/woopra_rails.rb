@@ -26,13 +26,14 @@ module WoopraRails
     def init
       begin
         @env = ::Rails.env if defined? Rails
-        def dryrun
-          return @config["dryrun"] == true
-        end
         @base_params = "#{@endpoint}?host=#{account}&response=json&timeout=300000"
       rescue Exception => e
         puts("Error on init: #{e.message}")
       end
+    end
+
+    def dryrun
+      return @config["dryrun"] == true
     end
 
     def account

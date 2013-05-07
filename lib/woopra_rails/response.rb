@@ -8,7 +8,6 @@ module WoopraRails::Response
             self.send("#{k}=".to_sym, v)
           end  
         rescue Exception => e
-          ::Rails.logger("Woopra Exception: #{e.message}")
           self.send("success=", 1)
         end
         
