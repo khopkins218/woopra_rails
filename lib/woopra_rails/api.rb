@@ -24,13 +24,13 @@ module WoopraRails
 
     def record(event_name, user_name="", user_email="", args={})
       name = begin
-        URI::encode name
+        URI::encode user_name
       rescue
         ""
       end
 
       email = begin
-        URI::encode email
+        URI::encode user_email
       rescue 
         ""
       end
