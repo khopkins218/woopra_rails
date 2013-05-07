@@ -3,9 +3,15 @@ module WoopraRails::Response
     attr_accessor :success
     def new(json=nil)
       if json
-        JSON.parse(json).each do |k,v|
-          self.send("#{k}=".to_sym, v)
+        begin
+          JSON.parse(json).each do |k,v|
+            self.send("#{k}=".to_sym, v)
+          end  
+        rescue Exception => e
+          ::Rails.logger("Woopra Exception: #{e.message}")
+          self.send("success=", 1)
         end
+        
       end
       self
     end
