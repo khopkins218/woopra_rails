@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.woopra.com/track/ce/?ce_name=identified&cv_email=me@wooprauser.com&cv_name=woopra%20user&host=topgun.dp.generalassemb.ly&response=json&timeout=300000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Server:
+      - woopra-d-7.1b
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '13'
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"success":1}'
+    http_version: 
+  recorded_at: Tue, 07 May 2013 22:01:47 GMT
+recorded_with: VCR 2.4.0

@@ -12,32 +12,36 @@ require 'fileutils'
 ].each{ |f| require "woopra_rails/#{f}" }
 
 module WoopraRails
-  @endpoint     = 'http://www.woopra.com/track/ce/'
-  @dryrun       = false
-  @config       = {}
-  @env          = "development"
-  @base_params  = ""
+  @config = {}
 
   class << self
     def config=(config)
       @config = config
     end
 
-    def init
-      begin
-        @env = ::Rails.env if defined? Rails
-        @base_params = "#{@endpoint}?host=#{account}&response=json&timeout=300000"
-      rescue Exception => e
-        puts("Error on init: #{e.message}")
-      end
+    def config
+      @config
     end
 
     def dryrun
-      return @config["dryrun"] == true
+      @config["dryrun"]
     end
 
     def account
       @config["account"]
+    end
+
+    def env
+      return ::Rails.env if defined? Rails
+      ""
+    end
+
+    def endpoint
+      'http://www.woopra.com/track/ce/'
+    end
+
+    def base_params
+      "#{endpoint}?host=#{account}&response=json&timeout=300000"
     end
   end
 end

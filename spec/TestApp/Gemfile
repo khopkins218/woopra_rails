@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'woopra_rails', path: "../../", require: 'woopra_rails'
 gem 'sqlite3'
 gem 'jquery-rails'
 
@@ -25,7 +24,8 @@ group :test do
   gem 'simplecov', :require => false, :group => :test
 end
 
-group :test, :dp, :development do
+group :test, :development do
+  gem 'woopra_rails', path: "../../", require: 'woopra_rails'
   gem 'rspec-rails', '~> 2.13.0'
   gem 'factory_girl_rails'
   gem 'debugger'

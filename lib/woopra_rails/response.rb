@@ -1,16 +1,18 @@
-module WoopraRails::Response
-  class << self
+module WoopraRails
+  class Response
     attr_accessor :success
-    def new(json=nil)
-      if json
-        begin
-          JSON.parse(json).each do |k,v|
-            self.send("#{k}=".to_sym, v)
-          end  
-        rescue Exception => e
-          self.send("success=", 1)
-        end
-        
+    def new()
+      success = false
+    end
+
+    def parse(json=nil)
+      begin
+        JSON.parse(json).each do |k,v|
+          self.send("#{k}=".to_sym, v)
+        end  
+      rescue Exception => e
+        WoopraError.get_error(e, json)
+        send("success=", false)
       end
       self
     end

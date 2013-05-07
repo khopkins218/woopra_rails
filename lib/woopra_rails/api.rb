@@ -1,20 +1,10 @@
 module WoopraRails
   class << self
-    def identify(name="", email="")
-      name = begin
-        URI::encode name
-      rescue
-        ""
-      end
+    def identify(name=nil, email=nil)
+      raise ArgumentError, "You must identify with a name" unless name
+      raise ArgumentError, "You must identify with an email" unless email
 
-      email = begin
-        URI::encode email
-      rescue 
-        ""
-      end
-      
-      action = "&ce_name=identified&cv_name=#{name}&cv_email=#{email}"
-      ::Rails.logger.debug("User info: #{name.inspect}, #{email.inspect}")
+      action = "&ce_name=identified&cv_name=#{URI::encode name}&cv_email=#{URI::encode email}"
       issue_request(action)
     end
 
@@ -50,11 +40,10 @@ module WoopraRails
     end
 
     def issue_request(action=nil)
-      action = action.nil? ? @base_params : @base_params + action
+      action = action.nil? ? base_params : base_params + action
       uri = URI.parse(action)
-      resp = WoopraRails::Response.new(dryrun ? nil : Net::HTTP.get(uri))
-      return resp if resp.success?
-      raise WoopraError
+      resp = dryrun ? nil : Net::HTTP.get(uri)
+      WoopraRails::Response.new.parse(resp)
     end
   end
 end
