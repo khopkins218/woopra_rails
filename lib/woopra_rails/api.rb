@@ -1,10 +1,7 @@
 module WoopraRails
   class << self
-    def identify(name=nil, email=nil)
-      raise ArgumentError, "You must identify with a name" unless name
-      raise ArgumentError, "You must identify with an email" unless email
-
-      action = "&ce_name=identified&cv_name=#{URI::encode name}&cv_email=#{URI::encode email}"
+    def identify(name, email, ip)
+      action = "&ip=#{URI::encode ip}&ce_name=identified&cv_name=#{URI::encode name}&cv_email=#{URI::encode email}"
       issue_request(action)
     end
 
@@ -31,6 +28,7 @@ module WoopraRails
         ""
       end
       action = "&cv_name=#{name}&cv_email=#{email}&ce_name=#{event_name}"
+      action += "&ip=#{URI::encode args.delete(:ip)}"
 
       args.each do |k,v|
         action += "&ce_#{k}=#{URI::encode v.to_s}"
